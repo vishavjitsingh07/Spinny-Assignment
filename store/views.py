@@ -1,19 +1,17 @@
-from .models import Cube
-from store.filters import CubeFilter
-from django.core.exceptions import ObjectDoesNotExist
-from .serializers import CubeSerializer, AdminCubeSerializer
+""
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import (
-    api_view,
-    permission_classes,
-    authentication_classes,
-)
-from rest_framework.parsers import JSONParser
-from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.decorators import (api_view, authentication_classes,
+                                       permission_classes)
+from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAdminUser
+from rest_framework.response import Response
+
+from store.filters import CubeFilter
 from store.utils import check_validity
+
+from .models import Cube
+from .serializers import AdminCubeSerializer, CubeSerializer
 
 
 @api_view(["POST"])
@@ -50,7 +48,8 @@ def create_box(request):
                 "message": check_validity(request.user)[1],
                 "data": serializer.errors,
             },
-            status= status.HTTP_400_BAD_REQUEST)
+            status=status.HTTP_400_BAD_REQUEST,
+        )
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
