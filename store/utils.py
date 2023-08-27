@@ -27,4 +27,4 @@ def check_validity(user):
         if boxes_last_week_by_user > VARIABLES.get("L2") :
             return False, "Total Boxes added in a week by a user limit exceed"
         
-        return (True, "Created" )
+        return (True, "Created")
