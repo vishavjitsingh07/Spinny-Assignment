@@ -19,7 +19,7 @@ from .serializers import AdminCubeSerializer, CubeSerializer
 
 
 def home(response):
-    return HttpResponse("This is home page")
+    return HttpResponse("This is home page. Valid URL's are /create, /list, /my_list, /update, /delete")
 
 
 @api_view(["POST"])
