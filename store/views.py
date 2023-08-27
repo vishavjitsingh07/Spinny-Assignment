@@ -1,8 +1,12 @@
 ""
+from django.shortcuts import HttpResponse
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.decorators import (api_view, authentication_classes,
-                                       permission_classes)
+from rest_framework.decorators import (
+    api_view,
+    authentication_classes,
+    permission_classes,
+)
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
@@ -12,6 +16,10 @@ from store.utils import check_validity
 
 from .models import Cube
 from .serializers import AdminCubeSerializer, CubeSerializer
+
+
+def home(response):
+    return HttpResponse("This is home page")
 
 
 @api_view(["POST"])

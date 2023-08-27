@@ -23,6 +23,7 @@ router = DefaultRouter()
 
 
 urlpatterns = [
+    path("", views.home, name="admin"),
     path("create", views.create_box, name="create-box"),
     path("list", views.list_box, name="list-box"),
     path("my_list", views.my_list_box, name="list-my-box"),
